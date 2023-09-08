@@ -11,7 +11,7 @@ public abstract class BaseSchema {
         conditions.add(predicate);
     }
 
-    public boolean isValid(Object obj) {
+    public final boolean isValid(Object obj) {
         for (Predicate<Object> predicate: conditions) {
             if (!predicate.test(obj)) {
                 return false;

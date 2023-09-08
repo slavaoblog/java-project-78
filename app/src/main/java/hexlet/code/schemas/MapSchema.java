@@ -4,20 +4,20 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 public class MapSchema extends BaseSchema {
-    public MapSchema required() {
+    public final MapSchema required() {
         Predicate<Object> predicateRequired = x -> x instanceof Map<?, ?>;
         super.addPredicate(predicateRequired);
         return this;
     }
 
-    public MapSchema sizeof(int size) {
+    public final MapSchema sizeof(int size) {
         Predicate<Object> predicateSizeof = x -> x instanceof Map<?, ?>
                 && ((Map<?, ?>) x).size() == size;
         super.addPredicate(predicateSizeof);
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
+    public final MapSchema shape(Map<String, BaseSchema> schemas) {
         Predicate<Object> predicateShape = x -> x instanceof Map && formValidation(schemas, (Map<?, ?>) x);
         super.addPredicate(predicateShape);
         return this;
