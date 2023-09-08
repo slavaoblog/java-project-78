@@ -26,7 +26,7 @@ public class MapSchema extends BaseSchema {
     private boolean formValidation(Map<String, BaseSchema> schemas, Map<?, ?> map) {
         for (Map.Entry<String, BaseSchema> entry: schemas.entrySet()) {
             String key = entry.getKey();
-            if (map.containsKey(key) && !entry.getValue().isValid(map.get(key))) {
+            if (!map.containsKey(key) || !entry.getValue().isValid(map.get(key))) {
                 return false;
             }
         }
